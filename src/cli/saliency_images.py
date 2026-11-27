@@ -40,8 +40,6 @@ def load_images(directory, limit=2, split='train'):
     directory = Path(directory)
     if not directory.is_dir():
         raise FileNotFoundError(f'Image directory does not exist: {directory}')
-    if limit < 1:
-        raise ValueError('Image limit must be positive')
     samples = []
     for path in sorted(directory.rglob('*.safetensors')):
         with safe_open(str(path), framework='pt', device='cpu') as f:
